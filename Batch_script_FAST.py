@@ -1,0 +1,17 @@
+import os
+inp1 = open('RunSimulations_UQ.bat', 'r')
+lines = inp1.readlines()
+inp1.close()
+
+for row in range(0,7):
+	for b in range(1,4):
+		if b==1:speed=8
+		elif (b==2):speed=12
+		else:speed=18
+		out1=open('RunSImulations_UQ_row_'+'FAST_'+str(row)+'_BIN_'+str(b)+'.bat', 'w')
+		seed=0
+		for i, line in enumerate(lines):
+			while seed<30:
+				out1.write('start /b job submit  /scheduler:monsoon /jobname:jobname:Sobol_row_'+str(row)+'_seed_'+str(seed)+'.fst  "\\monsoon-data\Confidential\UQ\FAST_executable\FAST_Win32.exe"   ' + '"\\monsoon-data\Confidential\UQ\UQ_Scripting'+os.sep+'Row_'+str(row)+'_BIN_'+str(b)+os.sep+'FAST'+os.sep+'Sobol_row'+str(row)+'_seed_'+str(seed)+'.fst"\n')
+				seed=seed+1
+	out1.close()

@@ -1,0 +1,15 @@
+import os
+
+
+for row in range(4,5):
+	for b in range(1,2):
+		if b==1:speed=8
+		elif (b==2):speed=12
+		else:speed=18
+		out1=open('Turbsim_FAST_Random_seeds_Row_'+str(row)+'_BIN_'+str(b)+'.bat', 'w')
+		seed=0
+		while seed<100:
+				out1.write('"\\\monsoon-data\Confidential\UQ\Turbsim\TurbSim_Usr_Win32.exe"' + ' "\\\monsoon-data\Confidential\UQ\UQ_Scripting\Random_seeds'+os.sep+'Row_'+str(row)+'_BIN_'+str(b)+os.sep+'Turbsim_inputs'+os.sep+'Turbsim_input_file_'+str(speed)+'ms_row_'+str(row)+'_seed_'+str(seed)+'.inp"\n')
+				out1.write('"\\\monsoon-data\Confidential\UQ\FAST_executable\FAST_Win32.exe"'+' "\\\monsoon-data\Confidential\UQ\UQ_Scripting\Random_seeds'+os.sep+'Row_'+str(row)+'_BIN_'+str(b)+os.sep+'FAST'+os.sep+'FAST_row_'+str(row)+'_seed_'+str(seed)+'.fst"\n')
+				seed=seed+1
+	out1.close()

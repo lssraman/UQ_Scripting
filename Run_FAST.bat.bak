@@ -1,0 +1,3 @@
+@echo off
+"C:\Program Files\FAST\bin\FAST_x64.exe"  "C:\Users\lsethura\OPENMDAO\UQ_Scripting\User_Input_FAST_8ms.fst"
+

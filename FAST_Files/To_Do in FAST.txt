@@ -1,0 +1,14 @@
+1. Write a script to edit "User_Input_FAST.fst"
+  
+  Items to be changed each time
+  -- Name of file containing inflow wind input parameters (quoted string) - This refers to InflowWind.dat which is another input file
+
+2. Write a script to edit NrelOffshrBslineMW_InflowWInd_12mps.dat
+   Items to be changed each time
+
+   ---(WIndType ==3)  Name of the Full field wind file to use (.bts)  -Use .wnd file here
+   --- Change SigmaFx(u), sigma Fy(v) and SigmaFz(w) - Columns (-13-12,-11)
+   -- Change URef
+    -Change PLEXP
+
+ 

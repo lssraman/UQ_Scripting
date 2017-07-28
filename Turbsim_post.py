@@ -1,0 +1,37 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import statistics
+from statistics import mean
+
+myarray = np.loadtxt('C:\Users\lsethura\OPENMDAO\UQ_Scripting\Row_0_BIN_1\Turbsim_inputs\Turbsim_input_file_8ms_row_0_seed_10.dat',skiprows=4)
+y = myarray.astype(np.float)
+fig, ax = plt.subplots(nrows=2,ncols=2)
+
+plt.subplot(2,2,1)
+plt.plot(y[:,0],y[:,1],'b--')
+plt.xlabel('Time')
+plt.ylabel('U(m/s)')
+
+plt.subplot(2,2,2)
+plt.plot(y[:,0],y[:,5],'r--')
+plt.xlabel('Time')
+plt.ylabel('V(m/s)')
+
+plt.subplot(2,2,3)
+plt.plot(y[:,0],y[:,6],'g--')
+plt.xlabel('Time')
+plt.ylabel('W (m/s)')
+
+plt.subplot(2,2,4)
+plt.plot(y[:,0],y[:,10],'k--')
+print (" U:  %f \n V:  %f \n  W:  %f  \n 'U'W'  :%f  \n" "'U'V'  :%f \n" "V'W'  :%f  \n") % (mean(y[:,1]),mean(y[:,4]),mean(y[:,5]),mean(y[:,9]),mean(y[:,10]), mean(y[:,11]))
+plt.xlabel('Time')
+plt.ylabel("U'W'")
+#plt.show()
+
+
+savefig('figname.png', facecolor=fig.get_facecolor(), transparent=True)
+
+
+#plt.show()
+

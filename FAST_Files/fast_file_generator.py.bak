@@ -1,0 +1,58 @@
+import os
+
+def write_fast_files(invect, ii, jj,b):
+   n=0
+   while n<100:
+   	 if b==1:
+   	 	wind_speed=8
+                wind_speed = 8
+   	 	inp1 = open('\\\monsoon-data\Confidential\UQ\UQ_Scripting\Test26_FAST_Template_8ms.fst', 'r')
+   	 elif (b==2):
+   	 	wind_speed=12
+                wind_speed = 12
+   	 	inp1 = open('\\\monsoon-data\Confidential\UQ\UQ_Scripting\Test26_FAST_Template_12ms.fst', 'r')
+   	 elif (b==3):
+   	 	wind_speed=18
+                wind_speed = 18
+   	 	inp1 = open('\\\monsoon-data\Confidential\UQ\UQ_Scripting\Test26_FAST_Template_18ms.fst', 'r')
+   	 name='\\\monsoon-data\Confidential\UQ\UQ_Scripting\Random_seeds'+os.sep+'Row_'+str(ii)+'_BIN_'+str(b)+os.sep+'FAST'+os.sep+'FAST_row_'+str(ii)+'_seed_'+str(n)+'.fst'
+   	 name2='\\\monsoon-data\Confidential\UQ\UQ_Scripting\Random_seeds'+os.sep+'Row_'+str(ii)+'_BIN_'+str(b)+os.sep+'FAST'+os.sep+'NRELBsline5MW_InflowWind_'+str(wind_speed)+'mps_row_'+str(ii)+'_seed_'+str(n)+'.dat'
+   	 name3='NRELBsline5MW_InflowWind_'+str(wind_speed)+'mps_row_'
+   	 name41='NRELOffshrBsline5MW_Onshore_ElastoDyn_BDoutputs_'+str(wind_speed)+'ms.dat'
+   	 name5='NRELOffshrBsline5MW_BeamDyn.dat'
+   	 name6='NRELOffshrBsline5MW_Onshore_AeroDyn15.dat'
+   	 name7='NRELOffshrBsline5MW_Onshore_ServoDyn.dat'
+   	 outf1 = open(name, 'w')
+   	 for i, line in enumerate(inp1.readlines()):
+   	 	if i==21:outf1.write('"%s"  %s'%("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name41,       ' EDFile          - Name of file containing ElastoDyn input parameters (quoted string)\n'))
+   	 	elif i==22:outf1.write('"%s"  %s'%("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name5,      ' BDBldFile(1)    - Name of file containing BeamDyn input parameters for blade 1 (quoted string)\n'))
+   	 	elif i==23:outf1.write('"%s"  %s'%("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name5,     ' BDBldFile(2)    - Name of file containing BeamDyn input parameters for blade 1 (quoted string)\n'	))
+   	 	elif i==24:outf1.write('"%s"  %s'%("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name5,      ' BDBldFile(3)    - Name of file containing BeamDyn input parameters for blade 1 (quoted string)\n'	))
+   	 	elif i==25:outf1.write(name3+str(ii)+'_seed_'+str(n)+'.dat'+     '         InflowFile      - Name of file containing inflow wind input parameters (quoted string)\n')
+   	 	elif i==26:outf1.write('"%s"  %s'%("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name6,     '         AeroFile        - Name of file containing aerodynamic input parameters (quoted string)\n'))
+   	 	elif i ==27:outf1.write('"%s"  %s'%("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name7,     '         ServoFile       - Name of file containing control and electrical-drive input parameters (quoted string)\n'))
+   	 	else: outf1.write(line)
+   	 inp1.close()
+   	 outf1.close()
+   	 inp2 = open("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+'NRELOffshrBsline5MW_InflowWind_Master.dat', 'r')
+   	 outf2 = open(name2,'w')
+   	 name4="\\\monsoon-data\Confidential\UQ\UQ_Scripting\Random_seeds"+'\Row_'+str(ii)+'_BIN_'+str(b)+os.sep+'Turbsim_inputs'+os.sep+'Turbsim_input_file_'+str(wind_speed)+'ms_row_'+str(ii)+'_seed_'+str(n)+'.bts'
+   	 for i, line in enumerate(inp2.readlines()):
+   	 	if i+1 == 20: 
+   	 		print >> outf2, '"%s" %s'%(name4 , '           Filename       - Name of the Full field wind file to use (.bts)')
+   	 	else:
+   	 		outf2.write( line)
+   	 inp2.close()
+   	 outf2.close()
+   	 inp3=open("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name41,'r')
+         lines = inp3.readlines()
+         inp3.close()
+   	 outf3 = open("\\\monsoon-data\Confidential\UQ\UQ_Scripting"+os.sep+name41,'w')
+   	 path='\\\monsoon-data\Confidential\UQ\UQ_Scripting'+os.sep+'NRELOffshrBsline5MW_Blade.dat'
+   	 for i, line in enumerate(lines):
+   	 	if i==87:outf3.write('"%s"  %s'%(path,'           BldFile(1)  - Name of file containing properties for blade 1 (quoted string)\n'))
+   	 	elif i==88:outf3.write('"%s"  %s'%(path,'           BldFile(2)  - Name of file containing properties for blade 1 (quoted string)\n'))
+   	 	elif i==89:outf3.write('"%s"  %s'%(path,'           BldFile(3)  - Name of file containing properties for blade 1 (quoted string)\n'))
+   	 	else:outf3.write( line)
+   	 n=n+1
+         outf3.close()

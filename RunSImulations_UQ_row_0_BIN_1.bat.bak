@@ -1,0 +1,35 @@
+SET PathRoot1=N:\UQ_Scripting\Row_0_BIN_1\Turbsim_inputs
+SET HPCInfo= /jobtemplate:core /priority:"Lowest"  /scheduler:monsoon 
+SET TURBSIM=\\monsoon-data\Confidential\Turbsim\bin\Turbsim_x64.exe
+NET USE L: "%PathRoot1%"    /persistent:no
+
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_0.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_0.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_1.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_1.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_2.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_2.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_3.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_3.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_4.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_4.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_5.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_5.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_6.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_6.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_7.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_7.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_8.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_8.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_9.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_9.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_10.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_10.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_11.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_11.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_12.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_12.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_13.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_13.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_14.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_14.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_15.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_15.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_16.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_16.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_17.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_17.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_18.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_18.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_19.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_19.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_20.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_20.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_21.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_21.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_22.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_22.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_23.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_23.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_24.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_24.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_25.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_25.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_26.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_26.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_27.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_27.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_28.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_28.inp
+start /b job submit %HPCInfo% /jobname:Turbsim_input_file_8ms_row_0_seed_29.inp %TURBSIM% %PathRoot1%\Turbsim_input_file_8ms_row_0_seed_29.inp

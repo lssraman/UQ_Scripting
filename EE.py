@@ -23,6 +23,8 @@ uppers_BIN3 = np.array([ 0.7, 25,1600,1500, 650,   7.4,7.3, 4.2,  26, 18, 18, 0.
 sobols=(pd.read_csv('Sobol_set.csv', sep=r'\s+', header=None))
 sobols=sobols.values
 
+deltas = pd.read_csv('./deltas.csv', sep=r'\s+', header=None).values
+
 
 descaled_sobols_BIN1 = sobols.copy()
 descaled_sobols_BIN2 = sobols.copy()
@@ -31,36 +33,38 @@ for i in range(len(sobols[0,:])):
     descaled_sobols_BIN1[i,:] = lowers_BIN1 + (uppers_BIN1 - lowers_BIN1) * descaled_sobols_BIN1[i,:]
     descaled_sobols_BIN2[i,:] = lowers_BIN2 + (uppers_BIN2 - lowers_BIN2) * descaled_sobols_BIN2[i,:]
     descaled_sobols_BIN3[i,:] = lowers_BIN3 + (uppers_BIN3 - lowers_BIN3) * descaled_sobols_BIN3[i,:]
+
+descaled_matrixes = {1:descaled_sobols_BIN1, 2:descaled_sobols_BIN2, 3:descaled_sobols_BIN3}
   
 #source='5MW_reference'
 #dest = str(os.getcwd())
 
 #copy_tree(source,dest)
-name3='Random_seeds'
-os.makedirs(name3)
-for m in range (0,6):
-	for b in range(1,4):
-		name1='Random_seeds'+'/'+'Row_'+str(m)+'_BIN_'+str(b) +'/'+'Turbsim_inputs'
-		name2='Random_seeds'+'/'+'Row_'+str(m)+'_BIN_'+str(b) +'/'+'FAST'
-		print 'Generating Turbsim and FAST input files for BIN:'+str(b)+' and Row:'+str(m)
-		s="descaled_sobols_BIN"+str(b)
-		Matrix=eval(s)
+#name3='Random_seeds'
+#os.makedirs(name3)
+
+for b in range(1,4):
+     for ROW in range (0, 20):
+	    for COL in ["FLAG"] + range(len(deltas[ROW])):
+		name1='Random_seeds'+'/'+'Row_'+str(ROW)+'_BIN_'+str(b) +'/'+'Turbsim_inputs'
+		name2='Random_seeds'+'/'+'Row_'+str(ROW)+'_BIN_'+str(b) +'/'+'FAST'
+		print 'Generating Turbsim and FAST input files for BIN:'+str(b)+' and Row:'+str(ROW)
+                Matrix = descaled_matrixes[b].copy()
+		if COL != "FLAG": Matrix[ROW][COL] = lowers_BIN1[COL] + (uppers_BIN1[COL] - lowers_BIN1[COL]) * deltas[ROW][COL]
+                #pd.DataFrame(Matrix).to_excel('test.xlsx') ; quit()
 		if not os.path.exists(name1):
 			os.makedirs(name1)
 			os.makedirs(name2)
-			write_input_file(Matrix[m], m, m,b)
-			turb_specs(Matrix[m], m, m,b)
-			write_wind(Matrix[m], m, m,b)
-			write_fast_files(Matrix[m], m, m,b)
 		else:
 			shutil.rmtree(name1)
 			shutil.rmtree(name2)
 			os.makedirs(name1)
 			os.makedirs(name2)
-			write_input_file(Matrix[m], m, m,b)
-			turb_specs(Matrix[m], m, m,b)
-			write_wind(Matrix[m], m, m,b)
-			write_fast_files(Matrix[m], m, m,b)
-		
+		write_input_file(Matrix[ROW], ROW, COL, b)
+		turb_specs(Matrix[ROW], ROW, COL, b)
+		write_wind(Matrix[ROW], ROW, COL, b)
+		write_fast_files(Matrix[ROW], ROW, COL, b)
+
 print 'File generation complete'
+
 
